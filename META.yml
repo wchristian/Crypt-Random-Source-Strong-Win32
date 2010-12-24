@@ -23,7 +23,9 @@ no_index:
 requires:
   Any::Moose: 0.11
   Crypt::Random::Source: 0.06
+  Win32: 0.35
+  Win32::API: 0.55
   perl: 5.8.0
 resources:
   license: http://opensource.org/licenses/artistic-license.php
-version: 0.06
+version: 0.07

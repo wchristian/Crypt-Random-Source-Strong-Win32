@@ -5,7 +5,7 @@ use Win32;
 use Win32::API;
 use Win32::API::Type;
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 extends qw(
     Crypt::Random::Source::Strong
