@@ -1,9 +1,10 @@
 package Crypt::Random::Source::Strong::Win32;
 use 5.008;
-use Any::Moose;
+use Moo;
 use Win32;
 use Win32::API;
 use Win32::API::Type;
+use Types::Standard qw(InstanceOf Int);
 
 our $VERSION = '0.07';
 
@@ -12,13 +13,12 @@ extends qw(
     Crypt::Random::Source::Base
 );
 
-has 'rtlgenrand' => (is => 'ro', isa => 'Win32::API', lazy_build => 1);
+has 'rtlgenrand' => (is => 'lazy', isa => InstanceOf['Win32::API']);
 
 # For Windows 2000 only.
-has 'crypt_context' => (is => 'ro', isa => 'Int', lazy_build => 1);
-has 'cryptacquirecontext' => (is => 'ro', isa => 'Win32::API', 
-                              lazy_build => 1);
-has 'cryptgenrandom' => (is => 'ro', isa => 'Win32::API', lazy_build => 1);
+has 'crypt_context' => (is => 'lazy', isa => Int);
+has 'cryptacquirecontext' => (is => 'lazy', isa => InstanceOf['Win32::API']);
+has 'cryptgenrandom' => (is => 'lazy', isa => InstanceOf['Win32::API']);
 
 # The type of cryptographic service provider we want to use.
 # This doesn't really matter for our purposes, so we just pick

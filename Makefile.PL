@@ -6,9 +6,11 @@ all_from 'lib/Crypt/Random/Source/Strong/Win32.pm';
 test_requires 'Test::use::ok' => 0;
 test_requires 'Test::Exception' => 0;
 
-requires 'Any::Moose' => 0.11;
-# 0.06 was where C::R::S started using Any::Moose.
-requires 'Crypt::Random::Source' => '0.06';
+# for InstanceOf
+requires 'Types::Standard' => 0.008;
+# version needed for inheriting from Mouse classes
+requires 'Moo' => 0.091004;
+requires 'Crypt::Random::Source' => 0;
 # 0.55 fixes a bug with char* that might affect us.
 requires 'Win32::API' => 0.55;
 # 0.35 fixes a memory leak in GetOSVersion, which we use.
